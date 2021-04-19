@@ -1,0 +1,3 @@
+curl -X POST -d '{"type":"m.login.password", "user":"user", "password":"pass"}' http://localhost:8008/_matrix/client/r0/login
+
+curl -H "Authorization: Bearer token123" localhost:8008/_synapse/admin/v1/users/@finzzz:matrix.org/admin

@@ -1,0 +1,7 @@
+config.ini
+data
+.bucky
+__pycache__
+build
+*.spec
+.vscode

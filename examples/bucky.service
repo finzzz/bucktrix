@@ -1,0 +1,11 @@
+[Unit]
+Description=Bucky the bot
+
+[Service]
+User=debian
+Group=debian
+WorkingDirectory=/home/debian/
+ExecStart=/home/debian/bucky serve
+
+[Install]
+WantedBy=multi-user.target
