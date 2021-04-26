@@ -49,12 +49,11 @@ class Callbacks(object):
         for i in shlex.split(self.commands[query[0]]):
             tmp = i
             try:
-                if i.startswith('$'):
-                    idx = int(i.lstrip('$'))
-                    tmp = query[idx]
-                elif i == "*":
-                    command += " " + " ".join(query[idx+2:])
+                if i == "*":
+                    command += " " + " ".join(query[idx:])
                     break
+                elif i.startswith('$'):
+                    tmp = query[int(i.lstrip('$'))]
             except IndexError:
                 await task.send(
                     self.client,
@@ -63,6 +62,7 @@ class Callbacks(object):
                 break
 
             command += " " + tmp
+            idx += 1
 
         return command
 
