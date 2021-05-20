@@ -6,7 +6,7 @@ from nio import RoomMessageText
 from bucky import config, conn, task, callback
 
 
-VERSION = "0.1"
+VERSION = "0.1.1"
 CFG = ".bucky/config.ini"
 SESSION = ".bucky/session"
 

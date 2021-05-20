@@ -1,5 +1,6 @@
 import subprocess
 import shlex
+import os
 from . import task
 
 
@@ -10,32 +11,26 @@ class Callbacks(object):
         self.master = config.master
         self.trigger = config.trigger
         self.commands = config.commands
+        self.hist_file = ".bucky/history.txt"
 
     async def process_message(self, room, event):
-        # return if different room
         if room.room_id != self.room_id:
-            return
+            return  # if not same room
 
-        # return if not start with trigger
         if not (event.body).startswith(self.trigger):
+            return  # if not trigger
+
+        if not self.is_authorized(event.sender):
             return
 
-        # return if not authorized master
-        master = (self.master).split(",")
-        if "*" not in master and event.sender not in master:
-            print(master, event.sender)
-            return
+        query = self.is_last_command(event.body)
 
-        # strip trigger, return on empty query
-        query = (event.body).lstrip(self.trigger)
         query = shlex.split(query)
         if len(query) < 1:
-            return
+            return  # return on empty query
 
-        # check if command is specified in the config
         if query[0] not in self.commands:
-            await task.send(self.client, self.room_id, "Command not found")
-            return
+            return  # if command is specified in the config
 
         parsed_cmd = await self.parse_command(query)
 
@@ -69,7 +64,9 @@ class Callbacks(object):
     async def execute_command(self, command):
         output = subprocess.run(
             ["/bin/sh", "-c", command],
-            capture_output=True)
+            capture_output=True,
+        )
+
         stdout = (output.stdout).decode()
         stderr = (output.stderr).decode()
 
@@ -78,3 +75,25 @@ class Callbacks(object):
 
         if stderr != "":
             await task.send(self.client, self.room_id, stderr)
+
+    def is_authorized(self, s) -> bool:
+        master = self.master.split(",")
+        if "*" not in master and s not in master:
+            print(f"{s} is not authorized")
+            return False
+
+        return True
+
+    def is_last_command(self, s) -> str:
+        query = s.lstrip(self.trigger)  # strip trigger
+
+        if not (os.path.exists(self.hist_file)
+                and s == self.trigger*2):
+
+            with open(self.hist_file, "w") as f:
+                f.write(query)  # write to history
+
+            return query
+
+        with open(self.hist_file, "r") as f:
+            return f.read()

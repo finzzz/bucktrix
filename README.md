@@ -27,13 +27,8 @@ For testing purposes, I have built debian based binary which is available in `di
 ```
 poetry install
 make build
-```
-
-## Next steps
-```bash
-# follow the guided setup
-./bucky init    # generate config
-./bucky add     # add command
+dist/bucky init    # generate config
+dist/bucky add     # add command
 ```
 
 ## Folder structures
@@ -42,7 +37,8 @@ make build
 ├── bucky (binary)
 └── .bucky
     ├── config.ini
-    └── session
+    ├── history.txt
+    └── session/
 ```
 
 ## Command examples (manual edit config.ini)
@@ -69,12 +65,13 @@ echo4 = echo $2 $1 *        # combination of both
 ```
 
 # Sample scripts
-- Systemd service : check out `examples/bucky.service`
-- Bash script to send message : check out `examples/send.sh`
+- [Systemd service](examples/bucky.service)
+- [Bash script to send message](examples/send.sh)
 
 # TODO
 - Distributing
     - [ ] podman/docker build & image
     - [ ] distribute to pypi
 - Features
+    - [x] run last command
     - [ ] logging
