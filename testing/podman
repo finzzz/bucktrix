@@ -1,0 +1,5 @@
+podman run -it --rm debian:buster-backports /bin/bash
+
+apt update
+apt install -y -t buster-backports libolm-dev python3-pip
+pip3 install bucktrix
