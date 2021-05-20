@@ -4,15 +4,16 @@ import configparser
 
 
 class Config:
-    def __init__(self, file, store_path):
-        self.file = file
-        self.store_path = store_path
+    def __init__(self, buxtrix_dir):
+        self.file = os.path.join(buxtrix_dir, "config.ini")
+        self.store_path = os.path.join(buxtrix_dir, "session")
+        self.history_path = os.path.join(buxtrix_dir, "history.txt")
 
         # defaults
         self.server = "matrix.org"
-        self.username = "bucky"
-        self.password = "bucky"
-        self.room_id = "!buckyroom:matrix.org"
+        self.username = "bucktrix"
+        self.password = "bucktrix"
+        self.room_id = "!bucktrixroom:matrix.org"
         self.master = "*"
         self.shell = "/bin/sh"
         self.trigger = "!"

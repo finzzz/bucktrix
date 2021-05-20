@@ -1,11 +1,11 @@
 [Unit]
-Description=Bucky the bot
+Description=Bucktrix the bot
 
 [Service]
 User=debian
 Group=debian
 WorkingDirectory=/home/debian/
-ExecStart=/home/debian/bucky serve
+ExecStart=/home/debian/bucktrix serve
 
 [Install]
 WantedBy=multi-user.target

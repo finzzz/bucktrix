@@ -11,7 +11,7 @@ class Callbacks(object):
         self.master = config.master
         self.trigger = config.trigger
         self.commands = config.commands
-        self.hist_file = ".bucky/history.txt"
+        self.hist = config.history_path
 
     async def process_message(self, room, event):
         if room.room_id != self.room_id:
@@ -87,13 +87,13 @@ class Callbacks(object):
     def is_last_command(self, s) -> str:
         query = s.lstrip(self.trigger)  # strip trigger
 
-        if not (os.path.exists(self.hist_file)
+        if not (os.path.exists(self.hist)
                 and s == self.trigger*2):
 
-            with open(self.hist_file, "w") as f:
+            with open(self.hist, "w") as f:
                 f.write(query)  # write to history
 
             return query
 
-        with open(self.hist_file, "r") as f:
+        with open(self.hist, "r") as f:
             return f.read()

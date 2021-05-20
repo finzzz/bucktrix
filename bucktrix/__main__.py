@@ -1,14 +1,17 @@
 #! /usr/bin/python3
 
+import os
 import sys
 import asyncio
 from nio import RoomMessageText
-from bucky import config, conn, task, callback
+from bucktrix import config, conn, task, callback
 
 
-VERSION = "0.1.1"
-CFG = ".bucky/config.ini"
-SESSION = ".bucky/session"
+VERSION = "0.1.3"
+
+BUXTRIX_DIR = os.getenv("BUCKTRIX_DIR")
+if not BUXTRIX_DIR:
+    BUXTRIX_DIR = ".bucktrix/"
 
 
 def main():
@@ -16,7 +19,7 @@ def main():
         print("not enough args")
         quit(1)
 
-    cfg = config.Config(CFG, SESSION)
+    cfg = config.Config(BUXTRIX_DIR)
     cmd = sys.argv[1]
     if cmd == "init":
         cfg.init()
@@ -51,7 +54,7 @@ def main():
     elif cmd == "rm":
         cfg.rm()
     elif cmd == "version":
-        print(f"Bucky version {VERSION}")
+        print(f"Bucktrix version {VERSION}")
     else:
         print("Invalid command.")
 
