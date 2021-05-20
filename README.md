@@ -35,7 +35,9 @@ python3 -m bucktrix add
 ## Manual Build
 ```bash
 poetry install
+pip3 install pyinstaller
 make build
+
 dist/bucktrix init    # generate config
 dist/bucktrix add     # add command
 ```

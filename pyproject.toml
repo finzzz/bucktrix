@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bucktrix"
-version = "0.1.3"
+version = "0.1.4"
 homepage = "https://github.com/finzzz/bucktrix"
 description = "Matrix bot"
 authors = ["Vincent Carlos <git@finzzz.net>"]
@@ -10,8 +10,6 @@ python = "^3.7"
 matrix-nio = {extras = ["e2e"], version = "^0.16.0"}
 
 [tool.poetry.dev-dependencies]
-importlib-metadata = "^3.10.1"
-pyinstaller = "^4.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

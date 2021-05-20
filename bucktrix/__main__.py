@@ -7,7 +7,7 @@ from nio import RoomMessageText
 from bucktrix import config, conn, task, callback
 
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 
 BUXTRIX_DIR = os.getenv("BUCKTRIX_DIR")
 if not BUXTRIX_DIR:
