@@ -10,15 +10,12 @@ Bucktrix is a personal [matrix](https://github.com/matrix-org/synapse) chatbot t
 ## Things to note
 - Bucktrix should be installed in a machine where its privileges are being limited.
 - Bucktrix responds to command from control user which is in the same **encrypted** room.
-- It is also possible to send one-shot message using `./bucktrix send`.
+- It is also possible to send one-shot message.
 - `trigger` are used to differentiate when/where bucktrix is being called.
 - **Do not** use Bucktrix in a room where you cannot trust all participants.
 
-# Getting started
-The fastest way to install is via `pip`. For testing purposes, I have built debian based binary which is available in `dist` folder. Otherwise, you need to build it manually.
-
-## Installation
-### Requirements
+# Installation
+## Requirements
 - libolm3
 - libolm-dev (must be version 3.x)
 - poetry (manual build only)
@@ -38,16 +35,6 @@ poetry install
 make build
 dist/bucktrix init    # generate config
 dist/bucktrix add     # add command
-```
-
-## Folder structures
-```
-.
-├── bucktrix (binary)
-└── .bucktrix
-    ├── config.ini
-    ├── history.txt
-    └── session/
 ```
 
 ## Command examples (manual edit config.ini)
