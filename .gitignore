@@ -3,5 +3,6 @@ data
 .bucky
 __pycache__
 build
+dist
 *.spec
 .vscode
