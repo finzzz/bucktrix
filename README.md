@@ -1,4 +1,6 @@
 # Introduction
+![](bucktrix.svg)
+
 ## What is Bucktrix
 Bucktrix is a personal [matrix](https://github.com/matrix-org/synapse) chatbot that can send message or execute commands based on certain events.
 
