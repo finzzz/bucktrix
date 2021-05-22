@@ -9,6 +9,7 @@ class Callbacks(object):
         self.client = client
         self.room_id = config.room_id
         self.master = config.master
+        self.shell = config.shell
         self.trigger = config.trigger
         self.commands = config.commands
         self.hist = config.history_path
@@ -63,7 +64,7 @@ class Callbacks(object):
 
     async def execute_command(self, command):
         output = subprocess.run(
-            ["/bin/sh", "-c", command],
+            [self.shell, "-c", command],
             capture_output=True,
         )
 
