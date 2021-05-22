@@ -56,6 +56,12 @@ class Callbacks(object):
                     self.room_id, "Not enough argument")
                 command = ""
                 break
+            except ValueError:
+                await task.send(
+                    self.client,
+                    self.room_id, f"Error parsing '{i}' : must be integer")
+                command = ""
+                break
 
             command += " " + tmp
             idx += 1
