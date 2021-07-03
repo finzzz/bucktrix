@@ -10,6 +10,7 @@ class Callbacks(object):
         self.room_id = config.room_id
         self.master = config.master
         self.shell = config.shell
+        self.arg = config.arg
         self.trigger = config.trigger
         self.commands = config.commands
         self.hist = config.history_path
@@ -48,8 +49,8 @@ class Callbacks(object):
                 if i == "*":
                     command += " " + " ".join(query[idx:])
                     break
-                elif i.startswith('$'):
-                    tmp = query[int(i.lstrip('$'))]
+                elif i.startswith(self.arg):
+                    tmp = query[int(i.lstrip(self.arg))]
             except IndexError:
                 await task.send(
                     self.client,

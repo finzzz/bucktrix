@@ -15,6 +15,7 @@ class Config:
         self.password = "bucktrix"
         self.room_id = "!bucktrixroom:matrix.org"
         self.master = "*"
+        self.arg = "#"
         self.shell = "/bin/sh"
         self.trigger = "!"
         self.timeout = "30"
@@ -31,6 +32,7 @@ class Config:
 
         self.master = config['bot']['master']
         self.shell = config['bot']['shell']
+        self.arg = config['bot']['arg']
         self.trigger = config['bot']['trigger']
         self.timeout = config['bot']['timeout']
 
@@ -76,6 +78,7 @@ class Config:
         # bot
         self.master = config['bot']['master']
         self.shell = config['bot']['shell']
+        self.arg = config['bot']['arg']
         self.trigger = config['bot']['trigger']
         self.timeout = config['bot']['timeout']
 
@@ -94,6 +97,7 @@ class Config:
         config['bot'] = {
             'master': input(f"Master [{self.master}]: ") or self.master,
             'shell': input(f"Shell [{self.shell}]: ") or self.shell,
+            'arg': input(f"Argument trigger [{self.arg}]: ") or self.arg,
             'trigger': input(f"Trigger [{self.trigger}]: ") or self.trigger,
             'timeout': input(f"Timeout [{self.timeout}]: ") or self.timeout
         }
