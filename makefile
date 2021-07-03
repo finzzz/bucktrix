@@ -1,5 +1,5 @@
 test: 
-	env BUXTRIX_DIR="../.bucktrix" poetry run python3 -m bucktrix send "this is test"
+	env BUCKTRIX_DIR="../.bucktrix" poetry run python3 -m bucktrix send "this is test"
 
 build: bucktrix/*
 	poetry run pyinstaller -n bucktrix -F bucktrix/__main__.py
