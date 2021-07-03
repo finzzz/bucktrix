@@ -45,9 +45,9 @@ dist/bucktrix add     # add command
 ```
 [commands]
 echo1 = echo hello world
-echo2 = echo $3 $2 $1       # positional arguments
+echo2 = echo #3 #2 #1       # positional arguments
 echo3 = echo *              # wildcard
-echo4 = echo $2 $1 *        # combination of both
+echo4 = echo #2 #1 *        # combination of both
 ```
 
 ## Available commands
@@ -64,9 +64,21 @@ rm                  # delete command
 version             # show version
 ```
 
-# Sample scripts
+# Upgrading
+## 0.14 to 0.15
+Add `arg = #` to config.ini, like so:
+```
+[bot]
+master = *
+shell = /bin/sh
+arg = #
+trigger = !
+timeout = 30
+```
+
+# Examples
 - [Systemd service](examples/bucktrix.service)
-- [Bash script to send message](examples/send.sh)
+- [Script to send message](examples/send.sh)
 
 # TODO
 - Distributing

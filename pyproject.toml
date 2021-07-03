@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bucktrix"
-version = "0.1.4"
+version = "0.1.5"
 homepage = "https://github.com/finzzz/bucktrix"
 description = "Matrix bot"
 authors = ["Vincent Carlos <git@finzzz.net>"]
