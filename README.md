@@ -80,6 +80,9 @@ timeout = 30
 - [Systemd service](examples/bucktrix.service)
 - [Script to send message](examples/send.sh)
 
+# Useful scripts
+Visit [script folder](https://github.com/finzzz/bucktrix/tree/master/scripts)
+
 # TODO
 - Distributing
     - [ ] podman/docker build & image
