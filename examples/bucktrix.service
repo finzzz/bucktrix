@@ -1,7 +1,11 @@
 [Unit]
 Description=Bucktrix the bot
+After=network-online.target
+Wants=network-online.target
 
 [Service]
+Restart=on-failure
+RestartSec=5s
 User=debian
 Group=debian
 WorkingDirectory=/home/debian/
