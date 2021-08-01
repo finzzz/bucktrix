@@ -7,7 +7,7 @@ echo "" > /dev/shm/smartstat
 
 for i in "${DISK[@]}"; do
     echo "/dev/sd$i" >> /dev/shm/smartstat
-    SMART=$(smartctl --attributes -H /dev/sd"$i")
+    SMART=$(/usr/sbin/smartctl --attributes -H /dev/sd"$i")
     for j in "${ATTRS[@]}"; do
         echo "$SMART" | grep -E "$j" >> /dev/shm/smartstat
     done
